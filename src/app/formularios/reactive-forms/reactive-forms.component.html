@@ -1,0 +1,114 @@
+<div class="row">
+  <div class="col-12">
+    <h1>Formulario desafío Gruppo</h1>
+    <form
+      (ngSubmit)="onSubmit()"
+      [formGroup]="registerForm"
+      autocomplete="off"
+      class="row g-3"
+    >
+      <div class="col-md-6">
+        <label for="inputFirstName" class="form-label">Nombre</label>
+        <input
+          formControlName="nombre"
+          type="text"
+          [ngClass]="{ 'is-invalid': nombreControlIsInvalid }"
+          class="form-control"
+          id="inputFirstName"
+        />
+        <div class="form-text">Mínimo 6 caracteres.</div>
+        <div
+          *ngIf="nombreControl?.hasError('required') && nombreControlIsInvalid"
+          class="invalid-feedback"
+        >
+          Este campo es requerido.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="inputLastName" class="form-label">Apellido</label>
+        <input
+          formControlName="apellido"
+          type="text"
+          [ngClass]="{ 'is-invalid': apellidoControlIsInvalid }"
+          class="form-control"
+          id="inputLastName"
+        />
+        <div
+          *ngIf="
+            apellidoControl?.hasError('required') && apellidoControlIsInvalid
+          "
+          class="invalid-feedback"
+        >
+          Este campo es requerido.
+        </div>
+      </div>
+      <div class="col-md-12">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input
+          [formControl]="emailControl"
+          type="email"
+          [ngClass]="{
+            'is-invalid': emailControl.invalid && emailControl.touched
+          }"
+          class="form-control"
+          id="inputEmail4"
+        />
+        <div *ngIf="emailControl.hasError('required')" class="invalid-feedback">
+          Este campo es invalido.
+        </div>
+        <div *ngIf="emailControl.hasError('email')" class="invalid-feedback">
+          No es un email valido.
+        </div>
+      </div>
+
+      <ng-container formGroupName="localizacion">
+        <div class="col-12">
+          <label for="inputAddress" class="form-label">Dirección</label>
+          <input
+            formControlName="direccion_1"
+            type="text"
+            class="form-control"
+            id="inputAddress"
+            placeholder="1234 Main St"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">Ciudad</label>
+          <input
+            formControlName="ciudad"
+            type="text"
+            class="form-control"
+            id="inputCity"
+          />
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">Provincia</label>
+          <select
+            id="inputState"
+            class="form-select"
+            formControlName="provincia"
+          >
+            <option value="" selected>Seleccionar...</option>
+            <option>Buenos Aires</option>
+            <option>Córdoba</option>
+            <option>Santa Fe</option>
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <label for="inputZip" class="form-label">Código Postal</label>
+          <input
+            formControlName="zip"
+            type="text"
+            class="form-control"
+            id="inputZip"
+          />
+        </div>
+      </ng-container>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>

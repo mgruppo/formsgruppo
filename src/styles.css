@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --toolbar-alto: 64px;
+    --navbar-ancho: 190px
+}
+
+body {
+    background: linear-gradient(to right, #7269bd, #536cb4, #3c6da6, #316b94, #346782);
+    /*color: white;*/
+}
